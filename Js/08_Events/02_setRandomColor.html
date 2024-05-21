@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Random Color</title>
+</head>
+<body>
+    <button style="margin-top: 50px; margin-left:50px">Change Color</button>
+</body>
+<script>
+    const button = document.querySelector('button')
+    const body = document.querySelector('body')
+
+    body.style.padding = '40px';
+
+    function random(code){
+       generatedCode = Math.floor(Math.random() * (code + 1));
+       console.log(generatedCode)
+       return generatedCode
+    }
+    button.addEventListener('click', (e) =>{
+        // Generating a random color in RGB
+        const rgbCode = `rgb(${random(255)} ${random(255)} ${random(255)})`;
+        document.body.style.backgroundColor = rgbCode;
+    });
+
+
+</script>
+</html>

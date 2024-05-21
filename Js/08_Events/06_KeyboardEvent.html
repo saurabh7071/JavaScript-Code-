@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KeyBoard Events</title>
+    <style>
+        .container{
+            width: 400px;
+            height: 200px;
+            border: 2px solid green;
+            padding : 20px;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body onKeydown="showChar(event)">
+    <div class="container">
+        <p>Press any character key, with or without holding down the ALT key</p>
+        <p>You can also use the SHIFT key together with the ALT key</p>
+    </div>
+</body>
+<script>
+    function showChar(event){
+        alert("Key KeyDown : "+ event.key + "\n" + "charCode : "+ event.keyCode + "\n" + "ALT keyDown: "+ event.altKey + "\n" + "Shift keyDown: "+ event.shiftKey + "\n");
+    }
+</script>
+</html>

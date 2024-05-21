@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    <style>
+        .container {
+            width: 700px;
+            height: 200px;
+            border: 2px solid #212121;
+            padding: 20px;
+        }
+        #container {
+            width: 700px;
+            height: 200px;
+            border: 2px solid #212121;
+            padding: 20px;
+        }
+        .box{
+            width: 700px;
+            height: 200px;
+            border: 2px solid #212121;
+            padding: 20px;
+        }
+        #shape{
+            width: 700px;
+            height: 200px;
+            border: 2px solid #212121;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="" id="form1">
+        <label for="">
+            username: <input type="text" placeholder="Enter Username">
+        </label>
+        <label for="">
+            password: <input type="password" placeholder="Enter Password">
+        </label>
+    </form>
+    <br>
+    <br>
+    <form action="" id="form2">
+        <label for="">
+            Username : <input type="text" placeholder="Enter Username">
+        </label>
+        <label for="">
+            Password : <input type="password" placeholder="Enter Password">
+        </label>
+    </form>
+    <br>
+    <br>
+    <div class="container">
+        <p>Click anywhere to test the <code>altkey</code> property</p>
+        <p id="log"></p>
+    </div>
+    <br>
+    <br>
+    <div class="container">
+        <button id="button" oncontextmenu="event.preventDefault()">Click here with your mouse..</button>
+        <pre>0 : Main button pressed , usually the left button or the un-initialized state</pre>
+        <pre>1 : Auziliary button pressed, usually the wheel button or the middle button (if present)</pre>
+        <pre>2 : Secondary button pressed, usually the right button</pre>
+        <pre>3 : Fourth button, trypically the Browser Back button</pre>
+        <pre>4 : Fifth button, typically the Browser Forward button</pre>
+        <p id="log1"></p>
+    </div>
+    <br>
+    <br>
+    <div id="container">
+        <pre>Move your mouse to see its position</pre>
+        <p id="screen-log"></p>
+    </div>
+    <br>
+    <br>
+    <div class="box">
+        <p id="ctrLog">The ctrl key was pressed while the cursor was moving : false</p>
+    </div>
+    <br>
+    <br>
+    <div id="shape">
+        <p><label for=""><input type="checkbox" id="checkbox">Checked</label></p>
+        <p>
+            <button id="click">Click me to send a MouseEvent to the checkbox</button>
+        </p>
+    </div>
+</body>
+<script>
+    // ​‌‍‌⁡⁣⁢⁣Focus Event⁡​ - The focus event fires when an element has received focus. 
+
+    // ⁡⁣⁢⁣​‌‍‌blur Event​⁡ - The opposite of focus is the blur event, which fires when the element has lost focus 
+
+    const password = document.querySelector('input[type="password"]');
+
+    password.addEventListener('focus', (e) => {
+        console.log(e)
+        console.log(e.target)
+        e.target.style.backgroundColor = 'pink';
+    })
+
+    password.addEventListener('blur', (e) => {
+        e.target.style.backgroundColor = '';
+    });
+
+    // ​‌‍‌⁡⁢⁣⁣𝗘𝘃𝗲𝗻𝘁 𝗗𝗲𝗹𝗲𝗴𝗮𝘁𝗶𝗼𝗻⁡​ -> There are two ways of implementing event delegation for this event
+    // by using the focusin event or by setting the useCapture parameter of addEventListener() to true
+
+    // ⁡⁢⁢⁢by setting the useCapture parameter of addEventListener⁡
+    /*const form = document.querySelector('#form2')
+    form.addEventListener('focus',(e)=>{
+        e.target.style.background = 'yellow'
+    },true);
+
+    form.addEventListener('blur',(e)=>{
+        e.target.style.background = '';
+    },true);
+    */
+
+    // ⁡⁢⁢⁢by using the focusin and focusout event listener
+    
+    const form = document.querySelector('#form2');
+    form.addEventListener('focusin', (e) => {
+        e.target.style.background = 'pink';
+    });
+
+    form.addEventListener('focusout', (e) => {
+        e.target.style.background = '';
+    });
+    
+    // ⁡⁣⁢⁣​‌‍‌​‌‌‍𝗠𝗼𝘂𝘀𝗲 𝗘𝘃𝗲𝗻𝘁𝘀⁡ ⁡​
+
+    // ⁡⁢⁣⁣​‌‍‌𝗠𝗼𝘂𝘀𝗲 𝗘𝘃𝗲𝗻𝘁 : 𝗮𝗹𝘁𝗞𝗲𝘆 𝗽𝗿𝗼𝗽𝗲𝗿𝘁𝘆 ⁡
+    const container = document.querySelector('.container');
+    const log = document.querySelector('#log');
+    log.style.color = 'red';
+
+    container.addEventListener('click', logkey);
+
+    function logkey(e) {
+        console.log(e.altKey);
+        log.textContent = `The alt key is pressed : ${e.altKey}`;
+    }
+
+    // ⁡⁢⁣⁣​‌‍‌𝗠𝗼𝘂𝘀𝗲𝗘𝘃𝗲𝗻𝘁 : 𝗯𝘂𝘁𝘁𝗼𝗻 𝗽𝗿𝗼𝗽𝗲𝗿𝘁𝘆 ​⁡
+    const button = document.querySelector('#button');
+    button.addEventListener('mouseup', (e) => {
+        let log1 = document.querySelector('#log1');
+        log1.style.color = 'red';
+
+        switch (e.button) {
+            case 0:
+                log1.textContent = 'Left mouse button clicked';
+                break;
+            case 1:
+                log1.textContent = 'Middle mouse button clicked';
+                break;
+            case 2:
+                log1.textContent = 'Right mouse button clicked';
+                break;
+            default:
+                log1.textContent = `Unknown button code : ${e.button}`;
+        }
+    });
+
+
+    // ⁡⁢⁣⁣​‌‍‌𝘀𝗰𝗿𝗲𝗲𝗻𝗫 , 𝘀𝗰𝗿𝗲𝗲𝗻𝗬 ​⁡
+    // ⁡⁢⁣⁣​‌‍‌𝗰𝗹𝗶𝗲𝗻𝘁𝗫 , 𝗰𝗹𝗶𝗲𝗻𝘁𝗬​⁡
+    let containerr = document.querySelector('#container');
+    let screenLog = document.querySelector("#screen-log");
+    screenLog.style.color = 'red';
+    containerr.addEventListener("mousemove", logKey);
+
+    function logKey(e) {
+        screenLog.innerText = `
+    Screen X/Y: ${e.screenX}, ${e.screenY}
+    Client X/Y: ${e.clientX}, ${e.clientY}`;
+    }
+
+    // ⁡⁢⁣⁣​‌‍‌𝗠𝗼𝘂𝘀𝗲𝗘𝘃𝗲𝗻𝘁 : 𝗰𝘁𝗿𝗹𝗞𝗲𝘆 𝗣𝗿𝗼𝗽𝗲𝗿𝘁𝘆 ​⁡
+    const box = document.querySelector('.box');
+    const ctrLog = document.querySelector('#ctrLog')
+    
+    box.addEventListener('mousemove', ctrlog);
+
+    function ctrlog(e){
+        ctrLog.textContent = `The ctrl key was presssed while the cursor was moving : ${e.ctrlKey}`;
+        ctrLog.style.color = 'red';
+    }
+
+    // ⁡⁢⁣⁣​‌‍‌𝗘𝘃𝗲𝗻𝘁𝗧𝗮𝗿𝗴𝗲𝘁.𝗱𝗶𝘀𝗽𝗮𝘁𝗰𝗵𝗘𝘃𝗲𝗻𝘁()​⁡
+    const shape = document.querySelector('#shape');
+    const click = document.querySelector('#click')
+
+    click.addEventListener('click', simulateClick);
+
+    // Create a new MouseEvent object with the type 'click'
+    function simulateClick(e){
+        const checkbox = document.querySelector('#checkbox')
+        
+        let event = new MouseEvent("click",{
+            bubbles: true,  // Event bubbles up through the DOM
+            cancelable:true, // Event can be canceled
+            view: window,
+        });
+
+        // Dispatch the 'click' event to the button 
+        checkbox.dispatchEvent(event);
+    }
+
+</script>
+
+</html>

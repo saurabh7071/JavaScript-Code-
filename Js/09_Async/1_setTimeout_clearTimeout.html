@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async</title>
+</head>
+<body>
+    <h1>Async in JavaScript</h1>
+    <button id="stop">Stop</button>
+    
+    <script>
+        setTimeout(function(){
+            console.log("Async in JavaScript")
+        },2000)
+
+        const print = function(){
+            console.log("Reference dena hai function ka!");
+        }
+        setTimeout(print,3000) // Function ka reference dena hai , function ko call nahi karna hai
+
+        const ref = setTimeout(function(){
+            document.querySelector('h1').innerHTML = "Asynchronous Javascript😍😍"
+        },2000)
+
+        document.querySelector("#stop").addEventListener("click",()=>{
+            clearTimeout(ref)   // setTimeout ka reference dena hota hai..
+            console.log("It Works");
+        });
+    </script>
+</body>
+</html>

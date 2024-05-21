@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TouchEvent</title>
+    <style>
+        .container {
+            width: 700px;
+            height: 200px;
+            border: 2px solid #212121;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <pre>'touchstart' event handler logs the state of the event's modifier keys </pre>
+        <pre>TouchEvent.altKey , TouchEvent.ctrlKey , TouchEvent.metaKey , TouchEvent.shiftKey</pre>
+        <p id="log"></p>
+    </div>
+
+    <script>
+        const container = document.querySelector('.container');
+        const log = document.querySelector('#log');
+
+        function logClickInfo(event) {
+            log.textContent = "button is clicked";
+            console.log(event);
+            console.log(`altKey = ${event.altKey}`);
+            console.log(`ctrlKey = ${event.ctrlKey}`);
+            console.log(`metaKey = ${event.metaKey}`);
+            console.log(`shiftKey = ${event.shiftKey}`);
+        }
+
+        container.addEventListener('touchstart', (e) => {
+            logClickInfo(e.touches[0]);
+
+            // Additional code to check if Shift key is pressed during touch event
+            const shiftKeyPressed = e.shiftKey;
+            if (shiftKeyPressed) {
+                console.log("Shift key is pressed during touch event");
+            } else {
+                console.log("Shift key is not pressed during touch event");
+            }
+        }, false);
+
+        container.addEventListener('click', (e) => {
+            logClickInfo(e);
+        }, false);
+
+    </script>
+</body>
+</html>
