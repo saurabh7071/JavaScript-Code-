@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PopUp</title>
+    <link rel="stylesheet" href="10_style.css">
+</head>
+
+<body>
+    <div class="container">
+        <button type="submit" class="btn">Submit</button>
+        <div class="popup" id="popup">
+            <img src="../suppliments/check.jpg" alt="">
+            <h1>Thank You!</h1>
+            <p>Your details has been successfully submiteed. Thanks!</p>
+            <button type="button" id="closePopup">OK</button>
+        </div>
+    </div>
+
+    <script>
+        const popup = document.querySelector('#popup');
+        const btn = document.querySelector('.btn');
+        const closePopup = document.querySelector('#closePopup');
+
+        btn.addEventListener('click', function () {
+            popup.classList.add('open-popup');
+            console.log(popup.classList);
+        });
+
+        closePopup.addEventListener('click', function () {
+            popup.classList.remove("open-popup");
+        });
+
+    </script>
+</body>
+
+</html>

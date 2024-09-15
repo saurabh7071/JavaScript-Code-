@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag & Drop</title>
+    <link rel="stylesheet" href="06_style.css">
+</head>
+<body>
+
+    <div class="box">
+        <div class="left">
+            <div class="smallarea" draggable="true">Item 1</div>
+            <div class="smallarea"  draggable="true">Item 2</div>
+            <div class="smallarea" draggable="true">Item 3</div>
+            <div class="smallarea" draggable="true">Item 4</div>
+            <div class="smallarea" draggable="true">Item 5</div>
+        </div>
+        <div class="right">
+
+        </div>
+    </div>
+
+<script>
+    const smallAreas = document.querySelectorAll('.smallarea');
+    const right = document.querySelector('.right');
+    const left = document.querySelector('.left');
+
+    let selected = null;
+    smallAreas.forEach(function(values){
+        values.addEventListener("dragstart", function(e){
+            selected = e.target;
+            e.dataTransfer.effectAllowed = "move";
+        })
+    })
+
+    right.addEventListener("dragover", function(e){
+        e.preventDefault();
+        e.dataTransfer.dropEffect = "move";
+    })
+    
+    right.addEventListener("drop", function(e){
+        e.preventDefault();
+        if(selected){
+            console.log(selected);
+            right.appendChild(selected);
+
+            selected = null;
+
+        }
+    })
+
+    left.addEventListener("dragover", function(e){
+        e.preventDefault();
+        e.dataTransfer.dropEffect = "move";
+    })
+    left.addEventListener("drop", function(e){
+        e.preventDefault();
+        if(selected){
+            left.appendChild(selected);
+            selected = null;
+        }
+    })
+</script> 
+</body>
+</html>

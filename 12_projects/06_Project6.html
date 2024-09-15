@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 6</title>
+    <link rel="stylesheet" href="06_style.css">
+</head>
+<body>
+    <div class="main">
+        <div class="cursor"></div>
+        <h1>Cursor Animation</h1>
+    </div>
+    
+<script>
+    const cursor = document.querySelector('.cursor');
+    window.addEventListener('mousemove', function(e){
+        cursor.style.left = e.pageX + 'px';
+        cursor.style.top = e.pageY + 'px';
+    })
+</script>
+</body>
+</html>

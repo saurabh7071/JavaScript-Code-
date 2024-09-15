@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    background: #B993D6;
+    background: -webkit-linear-gradient(135deg, #8CA6DB, #B993D6);
+    background: linear-gradient(135deg, #8CA6DB, #B993D6);
+}
+
+.container {
+    margin: 10% 0 0 14%;
+
+    & h1 {
+        font-size: 2.5rem;
+        text-transform: capitalize;
+        font-weight: 900;
+        color: rgb(126, 16, 230);
+        margin-top: 5px;
+    }
+
+    & h2 {
+        font-size: 1.5rem;
+        font-weight: 900;
+        color: #ffff00;
+    }
+}
+
+.input-field{
+    margin-top: 25px;
+    background-color: rgba(255, 255, 255, 0.3);
+    width: 100%;
+    max-width: 500px;
+    padding: 25px 25px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    position: relative;
+}
+
+.input-field input{
+    flex: 1;
+    padding: 10px;
+    outline: none;
+    /* border: 2px solid rgb(126, 16, 230); */
+    border: none;
+    border-radius: 5px;
+    font-size: 17px;
+}
+
+.input-field #btn{
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    background-color: rgb(126, 16, 230);
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.input-field input::-webkit-calendar-picker-indicator{
+    position: absolute;
+    top : 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: auto;
+    height: auto;
+    background-position: calc(100% - 32%);
+    background-size: 20px;
+    cursor: pointer;
+}
+
+.output{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 35px;
+    width: 500px;
+}
+
+.output p{
+    padding: 10px 20px;
+    background-color: #fff;
+    font-size: 18px;
+    font-weight: 400;
+    border-radius: 5px;
+
+}

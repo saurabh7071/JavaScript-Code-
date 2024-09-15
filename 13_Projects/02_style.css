@@ -1,0 +1,98 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    background: #CCCCB2;
+    background: -webkit-linear-gradient(to right top, #757519, #CCCCB2);
+    background: linear-gradient(to right top, #757519, #CCCCB2);
+    display: grid;
+    place-items: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 1;
+    background-color: cornsilk;
+    border-radius: 10px;
+    padding: 60px 25px;
+    box-shadow: rgba(21, 21, 31, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.container h1 {
+    font-size: 36px;
+    color: #757519;
+    text-shadow: 2px 2px 0px rgba(255, 255, 255, 1),
+        5px 4px 0px rgba(0, 0, 0, 0.15);
+    margin-bottom: 20px;
+    position: relative;
+
+
+}
+
+.container h1::before {
+    content: "Generate a";
+    position: absolute;
+    top: -23px;
+    left: 0;
+    font-size: 24px;
+    color:crimson;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: 0.8px;
+    text-shadow: 2px 2px 0px rgba(255, 255, 255, 1),
+        5px 4px 0px rgba(0, 0, 0, 0.15);
+}
+
+.container .input-field{
+    background-color: #fdfcfc;
+    padding: 10px 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.input-field input{
+    border: none;
+    outline: none;
+    font-size: 20px;
+    color: #757519;
+}
+
+.input-field input::placeholder{
+    color: #c7c7c7;
+    letter-spacing: 0.6px;
+    font-size: 20px;
+}
+
+.input-field i{
+    font-size: 20px;
+    background-color: #dddada;
+    padding: 8px;
+    border-radius: 50%;
+}
+
+button{
+    padding: 12px 22px;
+    border: none;
+    font-size: 20px;
+    border-radius: 5px;
+    background-color: #757519;
+    color: #fff;
+}
+
+button i{
+    margin-right: 2px;
+    font-size: 18px;
+    background-color: #575711;
+    padding: 8px;
+    border-radius: 50%;
+}

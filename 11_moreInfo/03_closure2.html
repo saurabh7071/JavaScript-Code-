@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure</title>
+</head>
+<body>
+    <div id="container">
+        <button id="orange">Orange</button>
+        <button id="green">Green</button>
+        <button id="red">Red</button>
+        <button id="pink">pink</button>
+    </div>
+</body>
+<script>
+    function clickEvent(color){
+        return function inner(){
+            document.body.style.backgroundColor = `${color}`;
+        }
+    }
+
+    document.querySelector('#orange').onclick = clickEvent('orange')
+    document.querySelector('#green').onclick = clickEvent('green')
+    document.querySelector('#red').onclick = clickEvent('red')
+    document.querySelector('#pink').onclick = clickEvent('pink')
+</script>
+</html>

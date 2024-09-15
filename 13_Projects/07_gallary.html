@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallary</title>
+    <link rel="stylesheet" href="07_style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="leftArrow">
+            <h3> < </h3>
+        </div>
+        <div class="gallary">
+            <div>
+                <img src="../suppliments/model1.jpg" alt="My Picture">
+                <img src="../suppliments/model2.jpg" alt="My Picture">
+                <img src="../suppliments/model3.jpg" alt="My Picture">
+            </div>
+            <div>
+                <img src="../suppliments/model4.jpg" alt="My Picture">
+                <img src="../suppliments/model5.jpg" alt="My Picture">
+                <img src="../suppliments/model6.jpg" alt="My Picture">
+            </div>
+        </div>
+        <div class="rightArrow">
+            <h3> > </h3>
+        </div>
+    </div>
+
+<script>
+    const gallary = document.querySelector('.gallary');
+    const leftArrow = document.querySelector('.leftArrow');
+    const rightArrow = document.querySelector('.rightArrow');
+
+    gallary.addEventListener('wheel', function(e){
+        e.preventDefault();
+        gallary.scrollLeft += e.deltaY;
+        gallary.style.scrollBehavior = 'auto';
+    })
+
+    leftArrow.addEventListener('click', function(){
+        gallary.style.scrollBehavior = "smooth"
+        gallary.scrollLeft -= 265;
+    })
+
+    rightArrow.addEventListener('click', function(){
+        gallary.style.scrollBehavior = "smooth"
+        gallary.scrollLeft += 265;
+    })
+</script>
+</body>
+</html>

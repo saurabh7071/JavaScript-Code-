@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    background-color: cornflowerblue;
+    padding: 100px;
+}
+
+.box {
+    color: #fff;
+}
+
+.box h1 {
+    font-size: 38px;
+    font-weight: 800;
+
+}
+
+.box #btn {
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: 800;
+    background-color: rgb(62, 125, 241);
+    color: #fff;
+    margin-top: 15px;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+}
+
+.box #btn:hover {
+    background-color: rgb(10, 90, 240);
+
+    border: none;
+    letter-spacing: 0.5px;
+}
+
+.container {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: start;
+    overflow: hidden;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.notes-container {
+    position: relative;
+
+    & .notes {
+        width: 350px;
+        height: 130px;
+        background-color: #fff;
+        border-radius: 5px;
+        padding: 15px;
+        outline: none;
+        cursor: pointer;
+        font-size: 18px;
+        font-weight: 400;
+        font-family: 'Times New Roman', Times, serif;
+        overflow-y: auto;
+        scrollbar-width: none;
+        
+    }
+
+    & .deletBtn {
+        position: absolute;
+        bottom: 12px;
+        right: 12px;
+        padding: 3px 5px;
+        color: orangered;
+        border: none;
+        background-color: #dadada;
+        border-radius: 3px;
+    }
+
+}

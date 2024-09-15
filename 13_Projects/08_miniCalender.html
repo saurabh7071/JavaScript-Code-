@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Calender
+    </title>
+    <link rel="stylesheet" href="08_style.css">
+</head>
+<body>
+    <div class="box">
+        <div class="top">
+            <p id="date">01<span>-</span>June<span>-</span>2024</p>
+        </div>
+        <div class="bottom">
+            <p id="day">Friday</p>
+        </div>
+    </div>
+
+<script>
+    const date = document.querySelector('#date');
+    const day = document.querySelector('#day');
+
+    const todayDate = new Date();
+
+    const weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thrusday", "Friday", "Saturday"]
+    const allMonths = ["january", "February", "March", "April", "May", "June", "July", "August", "September", "Octomber", "November", "December"]
+
+    date.innerHTML = `${(todayDate.getDate()<10 ? "0":"")+todayDate.getDate()}<span>-</span>${allMonths[todayDate.getMonth()]}<span>-</span>${todayDate.getFullYear()}`
+    day.innerHTML = `${weekDays[todayDate.getDay()]}`
+</script>
+</body>
+</html>
