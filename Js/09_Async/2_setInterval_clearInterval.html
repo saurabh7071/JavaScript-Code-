@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setInterval & clearInterval</title>
+</head>
+<body>
+    <h1>Async in JavaScript</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+    
+    <script>
+        let ref;
+        document.querySelector("#start").addEventListener("click",()=>{
+            setInterval(function(){
+                console.log("Babu");
+            },2000)
+    
+            function interval(str){
+                console.log("Chal raha hai n kam!", Date.now(),str);
+            }
+            setInterval(interval,5000,"le bhikari!")    // isme hum parameter bhi pass kar sakte hai...
+
+            ref = setInterval(function(){
+                console.log("Kya khayega bol!")
+            },2000)
+        })
+        
+        document.getElementById("stop").addEventListener("click",()=>{
+            clearInterval(ref);
+            console.log("Stopped");
+        })
+    </script>
+</body>
+</html>

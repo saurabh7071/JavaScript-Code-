@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure</title>
+</head>
+<body>
+    
+</body>
+<!-- <script>
+    // parent function 
+    function outerFunction(){   
+        const x = 5.6
+
+        // child-1 function
+        function innerFunction(){
+            const y = 12
+            console.log("Child one : "+x)
+        }
+
+        // child-2 function
+        function innerFunction2(){
+            console.log("Child two : "+x)
+
+    //        console.log("value of y : "+y)  // Uncaught ReferenceError: y is not defined
+        }
+        innerFunction()
+        innerFunction2()
+    }
+
+    // console.log("Outside of parent function :"+x)   // Uncaught referenceError : x is not defined 
+    outerFunction();
+</script> -->
+<script>
+    function outer(){
+        let value = 56
+
+        function inner(){
+            console.log("value is :"+value);
+        }
+
+        return inner;
+    }
+
+    const scoping = outer();
+    scoping(); // output - value is :56
+
+    console.log("********************************")
+
+    function parent(username){
+        return function child(password){
+            console.log(username + ": " + password);
+        }
+    }
+
+    const scoping1 = parent("saurabh2343")
+    scoping1("45@dfd233")
+</script>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XMLHttpRequest</title>
+    <style>
+        #container {
+            width: 300px;
+            height: 200px;
+            border: 2px solid black;
+        }
+
+        div img {
+            float: right;
+            margin-top: 25px;
+            width: 150px;
+            height: 150px;
+            border: 1px solid red
+        }
+
+        div pre {
+            float: left;
+            padding-left: 10px;
+        }
+
+        button {
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>XMLHttpRequest</h1>
+    <h2>Card</h2>
+    <div id="container">
+        <img src="" alt="" />
+        <pre> Version : </pre>
+    </div>
+    <button type="submit" id="btn">Click!</button>
+</body>
+<script>
+    document.getElementById("btn").addEventListener("click", function () {
+        const pre = document.querySelector("pre")
+        const img = document.querySelector("img");
+
+        const requestUrl = 'https://randomuser.me/api/'
+        const xhr = new XMLHttpRequest();  // one of the object 
+        xhr.open('GET', requestUrl);    // open method ko call karna padta hai 
+        xhr.onreadystatechange = function () {
+            console.log(xhr.readyState);    // states contineousely change hote rahte hai isiliye 'readystate' hoti hai.. 
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    const data = JSON.parse(this.responseText); // JSON.parse method strige ko object ke convert karta hai 
+                    console.log(typeof data)                    // jab hum current context ki bat karte hai tab 'this' lagaya jata hai
+                    console.log(data.info.version);
+
+                    const version = data.info.version
+                    const imageUrl = "https://randomuser.me/api/portraits/men/25.jpg";
+
+                    pre.textContent = "Version:" + version;
+                    img.src = imageUrl
+                    img.alt = "card Image";
+                }else{
+                    console.error("Request Failed with status : ",xhr.status);
+                }
+
+            }
+        }
+        xhr.send(); // send() method se open method ko call kiya jata hai 
+    });
+
+</script>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom Interfaces</title>
+    <style>
+        .container {
+            display: flex;
+            gap: 0.5rem;
+            flex-direction: column;
+        }
+
+        button{
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <textarea cols="50" rows="3" class="story"></textarea>
+        <button id="set-text" type="button">Set text Content</button>
+        <button id="clear-text" type="button">Clear text Content</button>
+    </div>
+</body>
+<script>
+    const story = document.querySelector('.story')
+
+    const setText = document.querySelector('#set-text')
+    setText.addEventListener('click', () =>{
+        story.textContent = 'It was a dark and stormy night...'
+    });
+
+    const clearText = document.querySelector('#clear-text')
+    clearText.addEventListener('click', () =>{
+        story.textContent = "";
+    });
+</script>
+</html>
