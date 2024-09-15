@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Handler with AbortSignal</title>
+</head>
+<body>
+    <h2>Event Handler with AbortSignal</h2>
+    <button id="addButton">Add Event Listener</button>
+    <button id="removeButton">Remove Event Listener</button>
+
+    <script>
+
+        const controller = new AbortController(); // This controller will be used to create an 'AbortSignal' which can be passed to event listener to allow for their removal.
+
+        const addButton = document.querySelector('#addButton')
+        const removeButton = document.querySelector('#removeButton')
+
+        addButton.addEventListener('click',()=>{
+            const signal = controller.signal;   // we obtain the 'AbortSignal' from the 'controller' and store it in the variable 'signal'
+            const handler = () =>{  // event handler function 'handler' that logs 'Event Triggered' to the console.
+                console.log('Event Triggered');
+            }
+            document.addEventListener('click',handler, {signal});
+            // We add the 'handler' function as an event listner for the 'click' event on the 'document' with the 'signal' provided.
+            // This means the event listener will be associated with the 'signal' from the 'AbortController' allowing us to remove it later.
+        });
+
+        removeButton.addEventListener('click', removeEventListner);
+
+        function removeEventListner(){
+            controller.abort(); // effectively removing the event listener that was added earlier.
+            console.log('Event listener removed');
+        };
+    </script>
+</body>
+</html>

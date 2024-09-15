@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voting Machine</title>
+
+    <style>
+        body {
+            background-color: #414141;
+            color: blanchedalmond;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            width: 80%;
+            max-width: 600px;
+            margin: 5% auto;
+            border: 5px solid black;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: rgb(136, 136, 98);
+            border-radius: 10px;
+         
+        }
+
+        h2 {
+            margin-top: 0;
+            margin-left: 180px;
+        }
+
+        .option {
+            list-style: none;
+            padding: 0;
+        }
+
+        .option li {
+            margin-bottom: 10px;
+            margin-left: 150px;
+        }
+
+        .option label {
+            display: inline-block;
+            width: 80px;
+            text-align: left;
+        }
+
+        .option button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .option button:hover {
+            background-color: #0056b3;
+        }
+
+        #text {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        #otpInput {
+            display: none;
+        }
+
+        #otpButton {
+            display: none;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #1eb300;
+        }
+        .round-image {
+            width: 50px; 
+            height: 50px; 
+            border-radius: 50%; 
+            margin-right: 10px;
+            vertical-align: middle; 
+            border: 3px solid black;
+        }
+    </style>
+</head>
+
+<body style="background-color: #414141; color:rgb(10, 10, 10); font-weight:bold">
+    <div id="container">
+        <h2>Voting Machine</h2>
+        <div id="votingOptions">
+            <ul class="option">
+                <li>
+                    <img src="https://play-lh.googleusercontent.com/iXLXd3xcPhVoTviO3yoCQP3vdE4eD1wRVfnEWq1o9KhmC8ngKW0AriNtlnW11-DJnGA" alt="Party Symbol" class="round-image">
+                    <label for="Maharashtra">BJP</label>
+                    <button type="button" class="option" value="BJP" onclick="castVote('BJP')">Vote</button>
+                </li>
+                <br>
+                <li>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Indian_National_Congress_Flag.svg/1200px-Indian_National_Congress_Flag.svg.png" alt="Party Symbol" class="round-image">
+                    <label for="Gujrat">Congress</label>
+                    <button type="button" class="option" value="Congress" onclick="castVote('Congress')">Vote</button>
+                </li>
+                <br>
+                <li>
+                    <img src="https://images.indianexpress.com/2022/04/AAP-1.jpg" alt="Party Symbol" class="round-image">
+                    <label for="Bihar">AAP</label>
+                    <button type="button" class="option" value="AAP" onclick="castVote('AAP')">Vote</button>
+                </li>
+                <br>
+                <li>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Elephant_Bahujan_Samaj_Party.svg/1200px-Elephant_Bahujan_Samaj_Party.svg.png" alt="Party Symbol" class="round-image">
+                    <label for="Panjab">BSP</label>
+                    <button type="button" class="option" value="BSP" onclick="castVote('BSP')">Vote</button>
+                </li>
+                <br>
+                <li>
+                    <img src="https://www.peacockride.com/cdn/shop/files/NIC_ec09fbd8-07b6-4cbf-9b23-bf07884a2cd9_1024x1024.jpg?v=1683789103" alt="Party Symbol" class="round-image">
+                    <label for="Kerla">NCP</label>
+                    <button type="button" class="option" value="NCP" onclick="castVote('NCP')">Vote</button>
+                </li>
+            </ul>
+            <button onclick="showResults()">Show Results</button>
+        </div>
+
+        <script>
+            let voteCount = {
+                'BJP': 0,
+                'Congress': 0,
+                'AAP': 0,
+                'BSP': 0,
+                'NCP': 0
+            };
+            let votedNumbers = [];
+
+            function castVote(party) {
+                let phoneNumber = prompt('Please enter your phone number to vote (10 digits only):');
+                if (phoneNumber !== null && phoneNumber.trim() !== '' && /^\d{10}$/.test(phoneNumber)) {
+                    if (votedNumbers.includes(phoneNumber)) {
+                        alert('This phone number has already been used to vote. You cannot vote again.');
+                    } else {
+                        // Increment the vote count for the selected party
+                        voteCount[party]++;
+                        console.log(`Vote for ${party} counted. Total votes for ${party}: ${voteCount[party]}`);
+                        votedNumbers.push(phoneNumber);
+                        alert('Successfully voted!');
+                    }
+                } else {
+                    alert('Invalid phone number');
+                }
+            }
+
+            function showResults() {
+                let maxVotes = 0;
+                let winningParty = '';
+                for (let party in voteCount) {
+                    if (voteCount[party] > maxVotes) {
+                        maxVotes = voteCount[party];
+                        winningParty = party;
+                    }
+                }
+                if (maxVotes > 0) {
+                    alert(`Election Results:\n\n${winningParty} wins with ${maxVotes} votes!`);
+                } else {
+                    alert(`Election Process Starting yet!`);
+                }
+
+                // Reset vote count and voted numbers array
+                voteCount = {
+                    'BJP': 0,
+                    'Congress': 0,
+                    'AAP': 0,
+                    'BSP': 0,
+                    'NCP': 0
+                };
+                votedNumbers = [];
+            }
+
+        </script>
+    </div>
+</body>
+
+</html>

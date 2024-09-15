@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Delegation</title>
+    <style>
+        .tile{
+            height: 85px;
+            width: 25%;
+            float:left;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h2>Event Delegation</h2>
+    </div>
+    <div id="container">
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+    </div>
+
+    <script>
+
+        function random(number){
+            return Math.floor(Math.random() * number);
+        }
+
+        function bgColor(){
+            const randColor = `rgb(${random(255)} ${random(255)} ${random(255)})`;
+            return randColor;
+        }
+        const container = document.querySelector('#container')
+        container.addEventListener('click',(e)=>{
+            e.target.style.backgroundColor = bgColor();
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bind</title>
+</head>
+<body>
+    <button>Submit</button>
+</body>
+<script>
+    class binding{
+        constructor(){
+            this.library = "bind"
+            this.server = "https://localhost:5000"
+
+            document.querySelector('button').addEventListener('click', this.handleClick.bind(this));
+            
+        }
+        handleClick(){
+            console.log("Button Clicked!");
+            console.log(this);
+            console.log(this.server);
+        }
+    }
+
+    const user = new binding();
+</script>
+</html>
