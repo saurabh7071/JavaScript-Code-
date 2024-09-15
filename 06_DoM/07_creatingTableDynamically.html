@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Table</title>
+    <style>
+        table{
+            margin: 10px;
+            margin-left: 30px;
+        }
+        td{
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Dynamically Creating HTML Table</h2>
+    <input type="button" value="Generate a Table" onclick="generateTable()">
+</body>
+<script>
+    function generateTable(){
+    
+   // Create a <table> element and a <tbody> element
+    const table = document.createElement("table");
+    const tableBody = document.createElement("tbody");
+
+     // Creating all cell
+    for(let i=0;i<2;i++){
+
+        // creates a table row
+        const row = document.createElement("tr");
+
+        for(let j=0;j<2;j++){
+            const cell = document.createElement("td");
+            const cellText = document.createTextNode(`cell in row ${i}, column ${j}`);
+
+            cell.appendChild(cellText);
+            row.appendChild(cell);
+        }
+
+        // add the row to the end of the table body
+        tableBody.appendChild(row);
+    }
+
+    // put the <tbody> in the <table>
+    table.appendChild(tableBody);
+
+    // append <table> into <body>
+    document.body.appendChild(table);
+
+    // sets the border attribute of table to '2'
+    table.setAttribute("border", "3");
+}
+</script>
+</html>

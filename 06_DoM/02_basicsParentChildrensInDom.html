@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body style="background-color: #212121;color:#fff">
+    <div class="parent">
+        <!-- This is the comment -->
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thursday</div>
+    </div>
+</body>
+<script>
+    // move from parent to children 
+    const parentVariable = document.querySelector('.parent')
+    /* console.log(parentVariable)
+    console.log(parentVariable.children)  // HTML Collection return karta hai 
+    console.log(parentVariable.children[1])
+    console.log(parentVariable.children[1].innerHTML) */
+
+    for(let i=0;i<parentVariable.children.length;i++){
+        console.log(parentVariable.children[i].innerHTML)
+    }
+
+    parentVariable.children[1].style.color = 'red'
+
+    console.log(parentVariable.firstElementChild.innerHTML)
+    console.log(parentVariable.lastElementChild.innerHTML)
+
+    // move from child to parent 
+    const dayOne = document.querySelector('.day')
+    console.log(dayOne)
+    // Child ke through parent per move karna hai 
+    console.log(dayOne.parentElement)
+
+    console.log(dayOne.nextElementSibling) // Child ka next sibling kya hai to ye isse pata chalega 
+
+    // Intresting thing 
+    console.log("NODES :", parentVariable.childNodes)
+    /*
+        Nodelist or ChildNodes : jo hote hai vo actuall me ek complex tree structure hota hai , DOM me har ek cheej ka importance 
+                                 hota hai , agar aapne line break bhi diya hai to vo bhi ek node element hai , agar aap enter 
+                                 dabate hai to vo bhi nodelist me textNode ban jata hai ....
+                                 or 
+                                 ye sari cheeje behind the seen chalati hai 
+
+                        Note : HTML me ek line break count hota hai uske bad aap kitne bhi line break dijiye browser usepe render 
+                                per nahi jata 
+    */
+</script>
+</html>

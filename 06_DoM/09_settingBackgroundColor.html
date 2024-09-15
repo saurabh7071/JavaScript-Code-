@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BackGround Color</title>
+</head>
+<body>
+    <div class="container">
+        <input type="button" value="Set Background Color" onclick="setBackgroundColor()">
+        <p>Hello</p>
+        <p>World</p>
+        <p>Kaise ho sabhi ?</p>
+    </div>
+    
+    <div>
+        <input type="button" value="Remove element" onclick="myFunction()">
+        <ul class="fullName">
+            <li>Rajnandan</li>
+            <li>Rajukumar</li>
+            <li>Ray</li>
+        </ul>
+    </div>
+</body>
+<script>
+    function setBackgroundColor(){
+        const para = document.getElementsByTagName('p'); // selecting the third paragraph using its index');
+
+        const colorPara = para[2]
+        colorPara.style.background = "green"
+
+        const h1 = document.createElement('h1');
+        h1.appendChild(document.createTextNode("Fuck You !!"))
+        h1.style.fontSize = "50px"
+        document.body.appendChild(h1)
+    }
+
+    function myFunction(){
+        
+        const list = document.getElementsByClassName("fullName")[0]; // Accessing the first element with the class 'fullName'
+        list.removeChild(list.firstElementChild); // Removing the first child element of the list
+    }
+</script>
+</html>
